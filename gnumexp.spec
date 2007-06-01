@@ -1,5 +1,5 @@
 %define	version	0.10.0
-%define release	%mkrel 3
+%define release	%mkrel 4
 
 %define numexp_version 0.11.0
 %define orbit_version 2.12.1
@@ -23,7 +23,7 @@ BuildRequires:	libxml2-utils
 BuildRequires:	gnome-python-extras >= 2.9.4
 BuildRequires:	pygtk2.0-devel >= 2.5.3
 BuildRequires:	pyorbit-devel >= 2.0.1
-BuildRequires:	pymathml >= %{pymathml_version}
+BuildRequires:	python-pymathml >= %{pymathml_version}
 BuildRequires:	docbook-dtd-mathml20
 BuildRequires:	libnxplot-python
 BuildRequires:	libnxplot-devel
@@ -72,26 +72,6 @@ kill $pid
 %install
 rm -rf %{buildroot}
 GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 %makeinstall_std DISABLE_MIME_INSTALL=1
-
-mkdir -p %{buildroot}%{_menudir}
-cat << _EOF_ > %{buildroot}%{_menudir}/%{name}
-?package(%{name}): \
- command="%{_bindir}/gnumexp" \
- icon="%{name}.png" \
- longtitle="Enter NumExp math queries" \
- needs="x11" \
- section="More Applications/Sciences/Mathematics" \
- title="gNumExp Math Console" \
- startup_notify="yes"
-?package(%{name}): \
- command="%{_bindir}/gnumexp -p" \
- icon="%{name}.png" \
- longtitle="Plot NumExp functions" \
- needs="x11" \
- section="More Applications/Sciences/Mathematics" \
- title="gNumExp Function Plotter" \
- startup_notify="yes"
-_EOF_
 
 #icons
 mkdir -p %{buildroot}%{_miconsdir} \
@@ -146,7 +126,6 @@ rm -rf %{buildroot}
 %{_libdir}/bonobo/servers/*.server
 %{_libdir}/orbit-2.0/*.so
 %{_libdir}/python?.?/site-packages/*
-%{_menudir}/%{name}
 %{_iconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
