@@ -1,14 +1,11 @@
-%define	version	0.10.0
-%define release	%mkrel 4
-
 %define numexp_version 0.11.0
 %define orbit_version 2.12.1
 %define pymathml_version 0.3-2mdk
 
 Summary:	GUI frontend for NumExp-core
 Name:		gnumexp
-Version:	%{version}
-Release:	%{release}
+Version:	0.10.0
+Release:	%mkrel 6
 License:	GPL
 Group:		Sciences/Mathematics
 URL:		http://numexp.sf.net/
@@ -43,7 +40,7 @@ Requires:	pymathml >= %{pymathml_version}
 Requires:	docbook-dtd-mathml20
 Requires: pymathml
 # prevent "Fatal Python error: can't initialise module _nxplot" error:
-Requires: gnome-python-gnomeprin
+Requires: gnome-python-gnomeprint
 
 %description
 gNumExp is a GUI frontend to numexp-core. gNumExp can be considered
