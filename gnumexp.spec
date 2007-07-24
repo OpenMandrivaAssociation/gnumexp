@@ -36,9 +36,12 @@ Requires(postun): shared-mime-info
 Requires:	urw-fonts
 Requires:	numexp-core >= %{numexp_version}
 Requires:	ORBit2 >= %{orbit_version}
-Requires:	pymathml >= %{pymathml_version}
 Requires:	docbook-dtd-mathml20
-Requires: pymathml
+%if %mdkversion < 200710
+Requires: pymathml >= %{pymathml_verison}
+%else
+Requires: python-pymathml >= %{pymathml_verison}
+%endif
 # prevent "Fatal Python error: can't initialise module _nxplot" error:
 Requires: gnome-python-gnomeprint
 
@@ -53,16 +56,7 @@ mathematical computation environment or even as a programming language.
 %setup -q
 
 %build
-# (Abel) X display AND fontpath are necessary for pygtk detection
-# :500 should be reasonable enough to avoid collision
-# I want to f*ck mandrake building clusters
-Xvfb -fp %{_datadir}/fonts/default/ghostscript -fp %{_prefix}/X11R6/%{_lib}/X11/fonts/misc :500 -nolisten unix & pid=$!
-export DISPLAY=:500
-
-%configure2_5x --disable-schemas-install || \
-	{ kill $pid; exit 1; }
-
-kill $pid
+%configure2_5x --disable-schemas-install
 
 %make
 
@@ -86,23 +80,15 @@ rm -f	%{buildroot}%{_libdir}/orbit-2.0/*.{a,la} \
 
 %post
 %update_menus
-export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
-for SCHEMA in numexp-console; do
-        gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/$SCHEMA.schemas > /dev/null
-done
-%{_bindir}/update-mime-database %{_datadir}/mime > /dev/null
+%post_install_gconf_schemas numexp-console
+%update_mime_database
 
 %preun
-if [ "$1" -eq 0 ]; then
-  export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
-  for SCHEMA in numexp-console; do
-    gconftool-2 --makefile-uninstall-rule %{_sysconfdir}/gconf/schemas/$SCHEMA.schemas > /dev/null
-  done
-fi
+%preun_uninstall_gconf_schemas numexp-console
 
 %postun
 %clean_menus
-%{_bindir}/update-mime-database %{_datadir}/mime > /dev/null
+%clean_mime_database
 
 %clean
 rm -rf %{buildroot}
