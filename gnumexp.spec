@@ -107,17 +107,13 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc README
 %{_bindir}/*
-%{_datadir}/application-registry/*.applications
 %{_datadir}/applications/*.desktop
-%{_datadir}/gnome-2.0/ui/*.xml
 %{_datadir}/%{name}
-%{_datadir}/idl/*.idl
-%{_datadir}/mime-info/%{name}.*
+%{_libdir}/%{name}
 %{_datadir}/mime/packages/*.xml
 %{_datadir}/pixmaps/*
-%{_libdir}/bonobo/servers/*.server
-%{_libdir}/orbit-2.0/*.so
-%{_libdir}/python?.?/site-packages/*
+%{_datadir}/pixmaps/%{name}
+%{_datadir}/gnome/help/%{name}
 %{_iconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
