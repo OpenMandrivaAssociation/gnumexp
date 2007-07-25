@@ -4,11 +4,11 @@
 
 Summary:	GUI frontend for NumExp-core
 Name:		gnumexp
-Version:	0.10.0
-Release:	%mkrel 6
+Version:	0.11.0
+Release:	%mkrel 1
 License:	GPL
 Group:		Sciences/Mathematics
-URL:		http://numexp.sf.net/
+URL:		http://numexp.sourceforge.net/
 Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 Source:		ftp://download.sourceforge.net/pub/sourceforge/numexp/%{name}-%{version}.tar.bz2
 
@@ -93,7 +93,6 @@ rm -f	%{buildroot}%{_libdir}/orbit-2.0/*.{a,la} \
 %clean
 rm -rf %{buildroot}
 
-
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc README
@@ -113,4 +112,3 @@ rm -rf %{buildroot}
 %{_miconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
 %{_sysconfdir}/gconf/schemas/*.schemas
-
