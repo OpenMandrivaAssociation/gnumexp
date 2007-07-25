@@ -77,7 +77,6 @@ convert -geometry 16x16 data/gnumexp_icon.png %{buildroot}%{_miconsdir}/%{name}.
 desktop-file-install --vendor='' \
 	--dir %{buildroot}%{_datadir}/applications/ \
 	--remove-category="Application" \
-	--remove-category="Graphics" \
 	--add-category="Education" \
 	--add-category="Science" \
 	--add-category="Math" \
