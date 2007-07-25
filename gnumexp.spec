@@ -74,11 +74,13 @@ install -m 0644 -D      data/gnumexp_icon.png %{buildroot}%{_liconsdir}/%{name}.
 convert -geometry 32x32 data/gnumexp_icon.png %{buildroot}%{_iconsdir}/%{name}.png
 convert -geometry 16x16 data/gnumexp_icon.png %{buildroot}%{_miconsdir}/%{name}.png
 
-deskto-file-install --vendor='' \
+desktop-file-install --vendor='' \
 	--dir %{buildroot}%{_datadir}/applications/ \
 	--remove-category="Applications" \
 	--remove-category="Graphics" \
-	--add-category="Education;Science;Math;" \
+	--add-category="Education" \
+	--add-category="Science" \
+	--add-category="Math" \
 	%{buildroot}%{_datadir}/applications/*.desktop
 
 %{find_lang} %{name}
