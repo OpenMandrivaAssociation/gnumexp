@@ -64,15 +64,22 @@ mathematical computation environment or even as a programming language.
 
 %install
 rm -rf %{buildroot}
-GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 %makeinstall_std DISABLE_MIME_INSTALL=1
+GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 %makeinstall DISABLE_MIME_INSTALL=1
 
 #icons
 mkdir -p %{buildroot}%{_miconsdir} \
 	 %{buildroot}%{_iconsdir} \
 
-install -m 0644 -D      pixmaps/gnumexp_icon.png %{buildroot}%{_liconsdir}/%{name}.png
-convert -geometry 32x32 pixmaps/gnumexp_icon.png %{buildroot}%{_iconsdir}/%{name}.png
-convert -geometry 16x16 pixmaps/gnumexp_icon.png %{buildroot}%{_miconsdir}/%{name}.png
+install -m 0644 -D      data/gnumexp_icon.png %{buildroot}%{_liconsdir}/%{name}.png
+convert -geometry 32x32 data/gnumexp_icon.png %{buildroot}%{_iconsdir}/%{name}.png
+convert -geometry 16x16 data/gnumexp_icon.png %{buildroot}%{_miconsdir}/%{name}.png
+
+deskto-file-install --vendor='' \
+	--dir %{buildroot}%{_datadir}/applications/ \
+	--remove-category="Applications" \
+	--remove-category="Graphics" \
+	--add-category="Education;Science;Math;" \
+	%{buildroot}%{_datadir}/applications/*.desktop
 
 %{find_lang} %{name}
 
