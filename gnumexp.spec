@@ -28,6 +28,8 @@ BuildRequires:	X11-Xvfb
 BuildRequires:	perl-XML-Parser
 # finding this one out is very painstaking
 BuildRequires:	gnome-python-gnomeprint
+BuildRequires:	gnome-doc-utils
+BuildRequires:	python-pygoocanvas
 
 Requires(post): GConf2
 Requires(preun): GConf2
