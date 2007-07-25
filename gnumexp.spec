@@ -30,6 +30,8 @@ BuildRequires:	perl-XML-Parser
 BuildRequires:	gnome-python-gnomeprint
 BuildRequires:	gnome-doc-utils
 BuildRequires:	python-pygoocanvas
+BuildRequires:	imagemagick
+BuildRequires:	desktop-file-utils
 
 Requires(post): GConf2
 Requires(preun): GConf2
