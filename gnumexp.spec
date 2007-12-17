@@ -9,7 +9,6 @@ Release:	%mkrel 1
 License:	GPL
 Group:		Sciences/Mathematics
 URL:		http://numexp.sourceforge.net/
-Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 Source:		ftp://download.sourceforge.net/pub/sourceforge/numexp/%{name}-%{version}.tar.bz2
 
 BuildRequires:	libnumexp-devel >= %{numexp_version}
