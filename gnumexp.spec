@@ -90,17 +90,21 @@ desktop-file-install --vendor='' \
 rm -f	%{buildroot}%{_libdir}/orbit-2.0/*.{a,la} \
 	%{buildroot}%{_libdir}/python?.?/site-packages/*.{a,la}
 
+%if %mdkversion < 200900
 %post
 %update_menus
 %post_install_gconf_schemas numexp-console
 %update_mime_database
+%endif
 
 %preun
 %preun_uninstall_gconf_schemas numexp-console
 
+%if %mdkversion < 200900
 %postun
 %clean_menus
 %clean_mime_database
+%endif
 
 %clean
 rm -rf %{buildroot}
