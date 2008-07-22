@@ -5,7 +5,7 @@
 Summary:	GUI frontend for NumExp-core
 Name:		gnumexp
 Version:	0.11.0
-Release:	%mkrel 1
+Release:	%mkrel 3
 License:	GPL
 Group:		Sciences/Mathematics
 URL:		http://numexp.sourceforge.net/
