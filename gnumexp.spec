@@ -44,7 +44,7 @@ Requires:	docbook-dtd-mathml20
 %if %mdkversion < 200710
 Requires: pymathml >= %{pymathml_version}
 %else
-Requires: python-pymathml >= %{pymathml_verison}
+Requires: python-pymathml >= %{pymathml_version}
 %endif
 # prevent "Fatal Python error: can't initialise module _nxplot" error:
 Requires: gnome-python-gnomeprint
