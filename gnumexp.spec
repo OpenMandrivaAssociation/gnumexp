@@ -42,7 +42,7 @@ Requires:	numexp-core >= %{numexp_version}
 Requires:	ORBit2 >= %{orbit_version}
 Requires:	docbook-dtd-mathml20
 %if %mdkversion < 200710
-Requires: pymathml >= %{pymathml_verison}
+Requires: pymathml >= %{pymathml_version}
 %else
 Requires: python-pymathml >= %{pymathml_verison}
 %endif
