@@ -8,7 +8,7 @@ Version:	0.11.0
 Release:	%mkrel 5
 License:	GPL
 Group:		Sciences/Mathematics
-URL:		http://numexp.sourceforge.net/
+URL:		https://numexp.sourceforge.net/
 Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 Source:		ftp://download.sourceforge.net/pub/sourceforge/numexp/%{name}-%{version}.tar.bz2
 
